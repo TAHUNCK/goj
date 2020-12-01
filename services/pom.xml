@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>services</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>management</module>
+        <module>practice</module>
+        <module>user</module>
+    </modules>
 
     <dependencies>
         <dependency>
