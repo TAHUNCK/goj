@@ -13,7 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>goj-common</module>
+        <module>goj-db</module>
+        <module>goj-knife4j</module>
     </modules>
-
 
 </project>

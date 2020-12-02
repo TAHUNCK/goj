@@ -11,6 +11,7 @@
     <modules>
         <module>services</module>
         <module>commons</module>
+        <module>gateway</module>
     </modules>
 
     <properties>
@@ -22,7 +23,7 @@
         <spring.boot.version>2.2.7.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.3.RELEASE</spring.cloud.alibaba.version>
-        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
         <lombok.version>1.18.12</lombok.version>
         <hutool.version>5.4.3</hutool.version>
         <knife4j.version>2.0.8</knife4j.version>
@@ -31,6 +32,22 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.goj</groupId>
+                <artifactId>goj-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.goj</groupId>
+                <artifactId>goj-db</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.goj</groupId>
+                <artifactId>goj-knife4j</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

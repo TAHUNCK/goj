@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: management-routh
+          uri: lb://management
+          predicates:
+            - Path=/management/**
+
+        - id: practice-routh
+          uri: lb://practice
+          predicates:
+            - Path=/practice/**
+
+        - id: user-routh
+          uri: lb://user
+          predicates:
+            - Path=/user/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

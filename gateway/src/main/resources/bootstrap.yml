@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.47.130:8848
+        username: nacos
+        password: 1234567
+        file-extension: yml
+        extension-configs:
+          - data-id: spring-commons.yml
+            refresh: true
+          - data-id: spring-actuator.yml
+            refresh: true
+      discovery:
+        server-addr: 192.168.47.130:8848
+        username: nacos
+        password: 1234567
