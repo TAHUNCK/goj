@@ -1,9 +1,9 @@
 package org.goj.practice.service.impl;
 
-import org.goj.practice.entity.CustomInput;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.practice.CustomInput;
 import org.goj.practice.mapper.CustomInputMapper;
 import org.goj.practice.service.CustomInputService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

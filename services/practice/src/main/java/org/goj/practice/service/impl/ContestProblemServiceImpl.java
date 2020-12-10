@@ -1,9 +1,9 @@
 package org.goj.practice.service.impl;
 
-import org.goj.practice.entity.ContestProblem;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.practice.ContestProblem;
 import org.goj.practice.mapper.ContestProblemMapper;
 import org.goj.practice.service.ContestProblemService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

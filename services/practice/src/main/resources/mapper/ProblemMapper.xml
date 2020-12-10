@@ -2,4 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.goj.practice.mapper.ProblemMapper">
 
+    <select id="getProblemConditionPage" resultType="org.goj.practice.vo.ProblemVO">
+        SELECT
+            problem_num,
+            title,
+            classify_name,
+            accepted,
+            submit,
+            ratio
+        FROM
+            problem LEFT JOIN classify ON problem.classify_id=classify.classify_id
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

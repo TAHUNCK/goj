@@ -26,67 +26,10 @@ public class CodeGeneratorMoreTable {
 
     @Test
     public void run() {
-        //StrategyConfig strategy = new StrategyConfig();
-        //strategy.setTablePrefix("BIZ_");
-        //strategy.setInclude("users");
-        GeneratorCode("goj", "user", User());
-        //业务单明细
-        //StrategyConfig strategy = new StrategyConfig();
-        //strategy.setTablePrefix("BIZ_");
-        //strategy.setInclude("BIZ_BUSI_ORDER_DETAILS");
-        //GeneratorCode("hotuser", "hotel", strategy);
-        ////用品需求单视图
-        // StrategyConfig strategy = new StrategyConfig();
-        // strategy.setTablePrefix("BIZ_");
-        // strategy.setInclude("BIZ_ALL_ORDERS_VIEW");
-        // GeneratorCode("hotuser", "user", strategy);
-        //业务单明细
-        //StrategyConfig strategy = new StrategyConfig();
-        //strategy.setTablePrefix("BIZ_");
-        //strategy.setInclude("BIZ_HOTEL_DEMAND_INQUIRY_VIEW");
-        //GeneratorCode("pfuser", "hotel", strategy);
-        //业务单生成
-//        StrategyConfig strategy = new StrategyConfig();
-//        strategy.setTablePrefix("Biz_");
-//        strategy.setInclude("BIZ_SUPP_BUSI_ORDER");
-//        GeneratorCode("hotuser", "hotel", strategy);
-        // 权限管理服务
-//        GeneratorCode("pfuser", "authority", AuthorityBIZ());
-//        GeneratorCode("pfuser", "authority", AuthoritySYS());
-//
-//        // 数据配置服务
-//        // 酒店 告警配置
-//        GeneratorCode("hotuser","configuration", ConfigurationBIZ_ALARM_CONFIG());
-//        // 平台
-//        GeneratorCode("pfuser","configuration", ConfigurationBIZ());
-//        GeneratorCode("pfuser","configuration", ConfigurationSYS());
-//
-//        // 调度服务 Dispatching
-//        GeneratorCode("pfuser","dispatching", Dispatching());
-//
-//        // 门禁服务
-//        GeneratorCode("hotuser", "entranceguard", EntranceGuardBIZ());
-//        GeneratorCode("hotuser", "entranceguard", EntranceGuardSYS());
-//
-//        // 设备服务
-//        GeneratorCode("hotuser", "equipment", Equipment());
-//
-//        // 客房服务
-//        GeneratorCode("hotuser", "guestroom", GuestRoom());
-//
-//        // 酒店管理服务
-//        // 酒店
-//        GeneratorCode("hotuser", "hotmanagement", HOTManagement_HOTEL());
-//        // 平台
-//        GeneratorCode("pfuser", "hotmanagement", HOTManagement());
-//
-//        // 会员
-//        GeneratorCode("pfuser", "member", Member());
-//
-//        // 住客服务
-//        GeneratorCode("hotuser", "residents", Residents());
-
-
+        StrategyConfig strategy = new StrategyConfig();
+        strategy.setInclude("classify");
+        GeneratorCode("goj","practice",strategy);
+        //GeneratorCode("goj", "user", User());
     }
 
     // 业务实体类生成

@@ -1,7 +1,7 @@
 package org.goj.practice.mapper;
 
-import org.goj.practice.entity.CompileInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.goj.common.entity.practice.CompileInfo;
 
 /**
  * <p>

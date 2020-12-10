@@ -1,7 +1,7 @@
 package org.goj.practice.service;
 
-import org.goj.practice.entity.Solution;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.goj.common.entity.practice.Solution;
 
 /**
  * <p>

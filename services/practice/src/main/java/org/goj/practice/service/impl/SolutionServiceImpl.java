@@ -1,9 +1,9 @@
 package org.goj.practice.service.impl;
 
-import org.goj.practice.entity.Solution;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.practice.Solution;
 import org.goj.practice.mapper.SolutionMapper;
 import org.goj.practice.service.SolutionService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,7 +1,7 @@
 package org.goj.management.mapper;
 
-import org.goj.management.entity.LoginLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.goj.common.entity.management.LoginLog;
 
 /**
  * <p>
