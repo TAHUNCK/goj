@@ -4,6 +4,7 @@
 
     <select id="getProblemConditionPage" resultType="org.goj.practice.vo.ProblemVO">
         SELECT
+            problem_id,
             problem_num,
             title,
             classify_name,

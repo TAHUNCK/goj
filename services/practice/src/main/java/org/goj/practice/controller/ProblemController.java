@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.goj.common.entity.practice.Problem;
 import org.goj.common.model.Result;
 import org.goj.practice.service.ProblemService;
+import org.goj.practice.vo.ProblemDetailsVO;
 import org.goj.practice.vo.ProblemVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,6 +42,14 @@ public class ProblemController {
                                                   @RequestParam(value = "sort", required = false, defaultValue = "1") Integer sort) {
         Page<ProblemVO> problemPageVO = problemService.getProblemConditionPage(current, size, classifyIdList, sort);
         return Result.succeed("查询题目成功！", problemPageVO);
+    }
+
+    @GetMapping("/problem")
+    public Result<ProblemDetailsVO> getProblemById(@RequestParam(value = "problemId") Long problemId){
+        Problem problem=problemService.getById(problemId);
+        ProblemDetailsVO problemDetailsVO=new ProblemDetailsVO();
+        BeanUtils.copyProperties(problem,problemDetailsVO);
+        return Result.succeed("根据ID查询题目成功！",problemDetailsVO);
     }
 
 }

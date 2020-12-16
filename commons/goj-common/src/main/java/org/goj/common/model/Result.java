@@ -43,7 +43,7 @@ public class Result<T> implements Serializable {
      * @date 2020/10/10 10:42
      */
     public static <T> Result<T> succeed(T data) {
-        return succeed(ResultCode.SUCCESS.getCode(), "",data);
+        return succeed(ResultCode.SUCCESS.getCode(), "success",data);
     }
 
     /**
@@ -52,6 +52,14 @@ public class Result<T> implements Serializable {
      */
     public static <T> Result<T> succeed(String code, String message,T data) {
         return new Result<>(code, message,data);
+    }
+
+    /**
+     * @author CK
+     * @date 2020/12/15 20:33
+     */
+    public static <T> Result<T> succeed(String code, String message) {
+        return new Result<>(code, message,null);
     }
 
     /**

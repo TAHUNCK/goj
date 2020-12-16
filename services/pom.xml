@@ -15,6 +15,7 @@
         <module>management</module>
         <module>practice</module>
         <module>user</module>
+        <module>base</module>
     </modules>
 
     <dependencies>
@@ -29,6 +30,10 @@
         <dependency>
             <groupId>org.goj</groupId>
             <artifactId>goj-knife4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.goj</groupId>
+            <artifactId>goj-feign</artifactId>
         </dependency>
 
         <dependency>

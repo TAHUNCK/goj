@@ -1,7 +1,7 @@
 package org.goj.user.mapper;
 
-import org.goj.user.entity.Topic;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.goj.common.entity.user.Topic;
 
 /**
  * <p>

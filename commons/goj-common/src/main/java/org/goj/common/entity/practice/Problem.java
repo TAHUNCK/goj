@@ -84,12 +84,12 @@ public class Problem implements Serializable {
     private Date inDate;
 
     /**
-     * 限时（秒）
+     * 限时（ms）
      */
-    private BigDecimal timeLimit;
+    private Integer timeLimit;
 
     /**
-     * 空间限制(MByte)
+     * 空间限制(kb)
      */
     private Integer memoryLimit;
 

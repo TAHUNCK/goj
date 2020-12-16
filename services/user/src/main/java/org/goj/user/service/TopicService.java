@@ -1,7 +1,7 @@
 package org.goj.user.service;
 
-import org.goj.user.entity.Topic;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.goj.common.entity.user.Topic;
 
 /**
  * <p>

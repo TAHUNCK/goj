@@ -15,6 +15,7 @@
         <module>goj-common</module>
         <module>goj-db</module>
         <module>goj-knife4j</module>
+        <module>goj-feign</module>
     </modules>
 
 </project>

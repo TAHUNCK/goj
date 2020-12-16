@@ -1,9 +1,9 @@
 package org.goj.user.service.impl;
 
-import org.goj.user.entity.Reply;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.user.Reply;
 import org.goj.user.mapper.ReplyMapper;
 import org.goj.user.service.ReplyService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

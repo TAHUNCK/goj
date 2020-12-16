@@ -1,9 +1,9 @@
 package org.goj.user.service.impl;
 
-import org.goj.user.entity.User;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.user.User;
 import org.goj.user.mapper.UserMapper;
 import org.goj.user.service.UserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

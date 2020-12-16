@@ -1,9 +1,9 @@
 package org.goj.user.service.impl;
 
-import org.goj.user.entity.ShareCode;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.goj.common.entity.user.ShareCode;
 import org.goj.user.mapper.ShareCodeMapper;
 import org.goj.user.service.ShareCodeService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

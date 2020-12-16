@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.goj.feign.RestTemplateAutoConfigure,\
+org.goj.feign.FeignAutoConfigure
