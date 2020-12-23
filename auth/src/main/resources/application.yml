@@ -1,0 +1,5 @@
+encrypt:
+  key-store:
+    location: classpath:goj.pfx
+    secret: 1790286512
+    alias: gojbyck

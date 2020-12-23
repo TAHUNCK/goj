@@ -1,12 +1,15 @@
 package org.goj.common.entity.user;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -17,6 +20,7 @@ import java.util.Date;
  * @since 2020-12-02
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class User implements Serializable {
 
@@ -89,9 +93,15 @@ public class User implements Serializable {
     private String school;
 
     /**
-     * 用户名
+     * 用户头像
      */
+    private String headPortrait;
+
+    @TableField(exist = false)
     private String username;
+
+    @TableField(exist = false)
+    List<Role> roles;
 
 
 }

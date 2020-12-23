@@ -1,4 +1,22 @@
+goj:
+  security:
+    ignore:
+      urls:
+        - "/practice/classify/**"
+        - "/practice/problem/**"
+        - "/user/user/login"
+        - "/user/user/register"
+        - "/user/user/userEmail"
+
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://10.2.6.49:10001/rsa/publicKey'
+  main:
+    allow-bean-definition-overriding: true
+
   cloud:
     gateway:
       discovery:

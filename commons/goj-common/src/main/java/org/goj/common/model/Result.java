@@ -70,6 +70,10 @@ public class Result<T> implements Serializable {
         return failed(ResultCode.UNKNOWN_ERROR.getCode(), message,null);
     }
 
+    public static <T> Result<T> failed(String code, String message) {
+        return new Result<>(code, message,null);
+    }
+
     /**
      * @author CK
      * @date 2020/10/10 10:42

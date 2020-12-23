@@ -8,4 +8,9 @@ public class RedisConstant {
 
     public static final String EMAIL_VALIDATE_CODE= "EMAIL_VALIDATE_CODE:";
 
+    /**
+     * 资源与角色的映射
+     */
+    public final static String RESOURCE_ROLES_MAP = "AUTH:RESOURCE_ROLES_MAP";
+
 }

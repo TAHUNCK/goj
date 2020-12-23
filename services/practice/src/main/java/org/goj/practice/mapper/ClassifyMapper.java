@@ -1,7 +1,7 @@
 package org.goj.practice.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.goj.common.entity.user.Classify;
+import org.goj.common.entity.practice.Classify;
 
 /**
  * <p>

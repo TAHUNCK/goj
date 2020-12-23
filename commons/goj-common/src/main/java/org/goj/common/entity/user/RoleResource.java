@@ -9,24 +9,28 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 题目分类
+ * 
  * </p>
  *
  * @author CK
- * @since 2020-12-07
+ * @since 2020-12-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Classify implements Serializable {
+public class RoleResource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "classify_id", type = IdType.ASSIGN_ID)
-    private Long classifyId;
+    /**
+     * 角色ID
+     */
+    @TableId(value = "role_id", type = IdType.ASSIGN_ID)
+    private Long roleId;
 
-    private Long classifyParentId;
-
-    private String classifyName;
+    /**
+     * 资源ID
+     */
+    private Long resourceId;
 
 
 }

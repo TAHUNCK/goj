@@ -27,8 +27,11 @@ public class CodeGeneratorMoreTable {
     @Test
     public void run() {
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("classify");
-        GeneratorCode("goj","practice",strategy);
+        strategy.setInclude("user_role");
+        strategy.setInclude("role");
+        strategy.setInclude("role_resource");
+        strategy.setInclude("resource");
+        GeneratorCode("goj","user",strategy);
         //GeneratorCode("goj", "user", User());
     }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.goj.user.mapper.ResourceMapper">
+
+    <select id="getRoleIdByResourceUrl" resultType="org.goj.common.entity.user.RoleResource">
+        SELECT b.role_id FROM resource a JOIN role_resource b ON a.resource_id=b.resource_id WHERE a.resource_url=#{resourceUrl}
+    </select>
+</mapper>

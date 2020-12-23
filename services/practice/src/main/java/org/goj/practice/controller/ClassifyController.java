@@ -1,8 +1,6 @@
 package org.goj.practice.controller;
 
 import cn.hutool.core.lang.Assert;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.goj.common.entity.user.Classify;
 import org.goj.common.model.Result;
 import org.goj.practice.service.ClassifyService;
 import org.goj.practice.vo.ClassifyCascaderVO;

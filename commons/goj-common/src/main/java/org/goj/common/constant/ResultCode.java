@@ -101,7 +101,7 @@ public enum ResultCode {
     // 访问权限异常
     USER_ERROR_A0300("A0300", "访问权限异常"),
     // 访问未授权
-    USER_ERROR_A0301("A0301", "访问未授权"),
+    USER_ERROR_A0301("A0301", "此访问未授权"),
     // 正在授权中
     USER_ERROR_A0302("A0302", "正在授权中"),
     // 用户授权申请被拒绝

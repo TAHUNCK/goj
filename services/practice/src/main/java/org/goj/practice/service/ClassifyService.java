@@ -1,7 +1,7 @@
 package org.goj.practice.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.goj.common.entity.user.Classify;
+import org.goj.common.entity.practice.Classify;
 import org.goj.practice.vo.ClassifyCascaderVO;
 
 import java.util.List;

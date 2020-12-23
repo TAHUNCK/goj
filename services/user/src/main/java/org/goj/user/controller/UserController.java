@@ -1,21 +1,32 @@
 package org.goj.user.controller;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.goj.common.constant.CommonConstant;
 import org.goj.common.constant.RedisConstant;
 import org.goj.common.constant.ResultCode;
+import org.goj.common.entity.auth.LoginUser;
+import org.goj.common.entity.auth.Oauth2TokenDTO;
 import org.goj.common.entity.base.Email;
+import org.goj.common.entity.user.Role;
+import org.goj.common.entity.user.User;
 import org.goj.common.model.Result;
+import org.goj.feign.feign.AuthFeignClient;
 import org.goj.feign.feign.BaseFeignClient;
+import org.goj.user.mapper.RoleMapper;
+import org.goj.user.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -36,6 +47,80 @@ public class UserController {
     @Autowired
     private BaseFeignClient baseFeignClient;
 
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private AuthFeignClient authFeignClient;
+
+    /**
+     * 用户登录
+     *
+     * @param email 邮箱
+     * @param password 密码
+     * @return Result<Oauth2TokenDTO>
+     * @author CK
+     * @date 2020/12/17 11:36
+     */
+    @PostMapping("/login")
+    Result<Oauth2TokenDTO> loginToGetToken(@RequestParam(value = "email")String email,
+                                           @RequestParam(value = "password")String password){
+        Map<String, String> parameters = Map.of("grant_type", "password", "client_id", "GojPassword", "client_secret", "GojSecretPassword", "username", email, "password", password);
+        User user = new LoginUser();
+        user.setUsername("GojPassword");
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, null);
+        Result<Oauth2TokenDTO> result = authFeignClient.postAccessToken(token, parameters);
+        Assert.isTrue(result.getCode().equals(ResultCode.SUCCESS.getCode()), result.getMessage());
+        QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
+        userQueryWrapper.select("head_portrait").eq(StrUtil.isNotBlank(email),"email",email);
+        List<User> list=userService.list(userQueryWrapper);
+        Oauth2TokenDTO oauth2TokenDTO=result.getData();
+        oauth2TokenDTO.setHeadPortrait(list.get(0).getHeadPortrait());
+        return Result.succeed("登录成功！", result.getData());
+    }
+
+    /**
+     * 用户注册
+     *
+     * @param email 邮箱
+     * @param password 密码
+     * @param rePassword 重复密码
+     * @param captcha 验证码
+     * @return Result<Oauth2TokenDTO>
+     * @author CK
+     * @date 2020/12/17 11:36
+     */
+    @PostMapping("/register")
+    Result<Oauth2TokenDTO> registerToGetToken(@RequestParam(value = "email")String email,
+                                              @RequestParam(value = "password")String password,
+                                              @RequestParam(value = "rePassword")String rePassword,
+                                              @RequestParam(value = "captcha")String captcha){
+        Assert.isTrue(password.equals(rePassword)&&StrUtil.isNotBlank(password),"两次输入密码不相等！");
+        String redisCode= (String) redisTemplate.opsForValue().get(RedisConstant.EMAIL_VALIDATE_CODE + email);
+        Assert.notNull(redisCode,"验证码不存在或已过期！");
+        Assert.isTrue(redisCode.equals(captcha),"验证码输入错误！");
+        boolean f=userService.insertUserAndUserRole(email,password);
+        Assert.isTrue(f,"注册失败！");
+        Result<Oauth2TokenDTO> oauth2TokenResult=loginToGetToken(email,password);
+        return Result.succeed("注册成功,自动登录！",oauth2TokenResult.getData());
+    }
+
+    @GetMapping(value = "/getUserByEmail")
+    LoginUser findByLoginUser(@RequestParam(value = "email") String email){
+        QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
+        userQueryWrapper.eq(StrUtil.isNotBlank(email),"email",email);
+        List<User> users=userService.list(userQueryWrapper);
+        Assert.isTrue(users.size()==1,"查询邮箱不唯一！");
+        LoginUser loginUser = new LoginUser();
+        BeanUtils.copyProperties(users.get(0), loginUser);
+        List<Role> roles = roleMapper.getRoleByUser(users.get(0).getUserId());
+        loginUser.setRoles(roles);
+        return loginUser;
+    }
+
     /**
      * 发送验证码给用户邮箱
      *
@@ -47,7 +132,7 @@ public class UserController {
     @PostMapping("/userEmail")
     public Result<String> sendSimpleEmail(@RequestParam(value = "to") String to){
         if (!StringUtils.isEmpty(redisTemplate.opsForValue().get(RedisConstant.EMAIL_VALIDATE_CODE + to))) {
-            return Result.succeed(ResultCode.ERROR_VERIFICATION_CODE_K0003.getCode(),"验证码未过期，请稍后再试！");
+            return Result.succeed(ResultCode.ERROR_VERIFICATION_CODE_K0003.getCode(),ResultCode.ERROR_VERIFICATION_CODE_K0003.getMessage());
         }
         String code = RandomUtil.randomString(CommonConstant.BASE_STRING, 6);
         Email email=new Email();
