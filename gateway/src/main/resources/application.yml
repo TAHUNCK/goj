@@ -13,7 +13,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://10.2.6.49:10001/rsa/publicKey'
+          jwk-set-uri: 'http://10.2.6.36:10001/rsa/publicKey'
   main:
     allow-bean-definition-overriding: true
 

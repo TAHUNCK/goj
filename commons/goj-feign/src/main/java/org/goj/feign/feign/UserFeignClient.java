@@ -1,7 +1,9 @@
 package org.goj.feign.feign;
 
 import org.goj.common.entity.auth.LoginUser;
+import org.goj.feign.feign.fallback.UserFeignClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author CK
  * @date 2020/12/16 17:50
  */
-@FeignClient(name = "user")
+@Component("userFeignClient")
+@FeignClient(name = "user", fallback = UserFeignClientFallback.class)
 public interface UserFeignClient {
 
     /**

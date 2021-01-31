@@ -11,8 +11,10 @@ import org.goj.user.service.ResourceService;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -37,7 +39,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
         try{
             QueryWrapper<Resource> resourceQueryWrapper=new QueryWrapper<>();
             resourceQueryWrapper.select("resource_url");
-            List<Resource> resources=super.list(resourceQueryWrapper);
+            Set<Resource> resources= new HashSet<>(super.list(resourceQueryWrapper));
             Map<String, List<String>> resourceRolesMap=resources.stream()
                     .collect(Collectors.toMap(Resource::getResourceUrl, t->{
                         List<RoleResource> list=resourceMapper.getRoleIdByResourceUrl(t.getResourceUrl());
