@@ -5,6 +5,10 @@ spring:
   application:
     name: practice
   cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.47.130:8858
+        port: 8719
     nacos:
       config:
         server-addr: 192.168.47.130:8848
@@ -15,8 +19,6 @@ spring:
           - data-id: data-source.yml
             refresh: true
           - data-id: spring-commons.yml
-            refresh: true
-          - data-id: spring-actuator.yml
             refresh: true
       discovery:
         server-addr: 192.168.47.130:8848

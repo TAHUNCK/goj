@@ -16,6 +16,7 @@
         <module>goj-db</module>
         <module>goj-knife4j</module>
         <module>goj-feign</module>
+        <module>goj-sentinel</module>
     </modules>
 
 </project>
